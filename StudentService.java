@@ -6,15 +6,22 @@ public class StudentService {
     private List<Student> students = new ArrayList<>();
 
     public void addStudent(Student student){
+        for(Student s: students){
+           if(s.getStudentId() == student.getStudentId()){ 
+              System.out.println("Studetn Id already exists! ");
+              return ; 
+           }
+        }
         students.add(student);
 
     }
     public void viewStudents(){
+        if(students.isEmpty()){
+            System.out.println("No Student Found! ");
+            return ;
+        }
         for(Student student : students) {
-            System.out.println(student.getStudentId());
-            System.out.println(student.getName());
-            System.out.println(student.getAge());
-            System.out.println(student.getCourse());
+            System.out.println(student);
         }
     }
     public void searchStudentById(int studentId){
@@ -29,5 +36,22 @@ public class StudentService {
             }
         }
         System.out.println("Student not found! ");
+    }
+    public void updateStudentCourseById(int studentId, String newCourse){
+        for(Student student : students){
+            if(student.getStudentId() == studentId){
+               student.setCourse(newCourse);
+               System.out.println("Course updated successfully! ");
+            }
+        }
+    }
+    public void deleteStudentById(int studentIdDelete){
+        for(Student student: students){
+            if(student.getStudentId() == studentIdDelete){
+              students.remove(student);
+              System.out.println("Student Removed Successfully! ");
+              return;
+            }        
+        }
     }
 }

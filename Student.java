@@ -42,5 +42,11 @@ public class Student {
         return course;
     }
 
-    
+    @Override 
+    public String toString(){
+        return "Id: " + studentId + 
+               "\nName: " +name + 
+               "\nAge: "+age+ 
+               "\nCourse: " + course;
+    }    
 }

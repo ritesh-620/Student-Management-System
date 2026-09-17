@@ -13,7 +13,9 @@ public class Main {
         System.out.println("1. Add student");
         System.out.println("2. view Student");
         System.out.println("3. Search Student");
-        System.out.println("Exit");
+        System.out.println("4. Update Student Course");
+        System.out.println("5. Delete Student");
+        System.out.println("6. Exit");
 
         int choice = sc.nextInt();
          switch (choice) {
@@ -52,12 +54,30 @@ public class Main {
                break;
 
             case 4:
+               System.out.println("Enter student Id: ");
+               int studentId = sc.nextInt();
+
+               sc.nextLine();
+
+               System.out.println("Enter New Course: ");
+               String newCourse = sc.nextLine();
+
+               studentService.updateStudentCourseById(studentId, newCourse);
+               break;
+
+            case 5: 
+               System.out.println("Enter Student Id: "); 
+               int studentIdDelete = sc.nextInt();
+               studentService.deleteStudentById(studentIdDelete); 
+               break;
+
+            case 6:
                System.out.println("Exiting...");
                sc.close();
                return;
 
             default:
-                System.out.println("Invalid Choice");
+               System.out.println("Invalid Choice");
          }
       }
    }
